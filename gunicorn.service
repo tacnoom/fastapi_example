@@ -1,0 +1,14 @@
+[Unit]
+Description=demo fastapi application
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/app/src/
+Environment="Path=/home/ubuntu/app/venv/bin"
+EnvironmentFile=/home/ubuntu/.env
+ExecStart=/home/ubuntu/app/venv/bin/fastapi run --workers 4 main.py
+
+[Install]
+WantedBy=multi-user.target
